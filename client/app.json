@@ -1,6 +1,18 @@
 {
   "expo": {
     "scheme": "acme",
+    "icon": "./assets/icon.png",
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#00B4FF"
+    },
     "web": {
       "bundler": "metro"
     },
