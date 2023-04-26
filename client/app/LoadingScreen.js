@@ -1,5 +1,5 @@
 import {View, Text, SafeAreaView, Image} from 'react-native';
-import styles from '../Styles/LoadingScreenStyle';
+import styles from '../Styles/LoadingStyle';
 import icon from '../assets/icon.png';
 import LottieView from "lottie-react-native";
 

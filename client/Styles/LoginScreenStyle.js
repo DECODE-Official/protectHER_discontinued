@@ -1,12 +1,9 @@
 import {StyleSheet} from "react-native";
 
 const Styles = StyleSheet.create({
-    view: {
-        height: '100%',
-        backgroundColor: '#fff',
-    },
     container: {
         alignItems: 'center',
+        justifyContent: 'center',
     },
     text: {
         fontSize: 50,
@@ -62,18 +59,21 @@ const Styles = StyleSheet.create({
     },
     inputArea: {
         width: '80%',
+        height: '30%',
+        marginBottom: 50,
+        justifyContent: 'space-between'
     },
     input: {
         height: 80,
-        backgroundColor: '#F5F5F5',
-        marginBottom: 35,
+        backgroundColor: '#f8f8f8',
         borderRadius: 20,
+        gap: 30,
         fontSize: 20,
         paddingHorizontal: 20
     },
     resetPassword: {
         alignItems: 'center',
-        marginBottom: 20
+        marginBottom: 50
     },
     passwordText: {
         fontSize: 20,
@@ -85,7 +85,7 @@ const Styles = StyleSheet.create({
     },
     login: {
         width: '80%',
-        marginBottom: 40,
+        marginBottom: 50,
     },
     loginButton: {
         height: 70,
