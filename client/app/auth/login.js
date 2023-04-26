@@ -1,20 +1,15 @@
 import {View, Text, SafeAreaView, Image, TextInput, TouchableOpacity, ScrollView} from "react-native";
-import Styles from '../Styles/LoginScreenStyle';
+import Styles from '../../Styles/LoginScreenStyle';
 import {LinearGradient} from "expo-linear-gradient";
-import {Link} from "expo-router";
+import {Link, Stack} from "expo-router";
 
 const Login = () => {
     return (
-        <ScrollView style={Styles.view} >
+        <ScrollView contentContainerStyle={{justifyContent: 'center', height: '100%', backgroundColor: '#fff'}}>
             <SafeAreaView style={Styles.container}>
-                <View style={Styles.welcome}>
-                    <Text style={Styles.welcomeText}>Welcome Back</Text>
-                    <Text style={Styles.welcomeEmoji}>👋🏻</Text>
-                </View>
-                <View style={Styles.avatarContainer}>
-                    <LinearGradient colors={['#01FAFF', '#006AFF']} style={Styles.avatar}/>
-                    <Image source={require('../assets/images/woman.png')} style={Styles.logo}/>
-                </View>
+                <Stack.Screen options={{
+                    headerShown: false
+                }}/>
                 <Text style={Styles.text}>Login</Text>
                 <View style={Styles.inputArea}>
                     <TextInput style={Styles.input} placeholder="Email"/>
@@ -22,7 +17,7 @@ const Login = () => {
                 </View>
                 <View style={Styles.resetPassword}>
                     <Text style={Styles.passwordText}>Forgot Your Password? </Text>
-                    <Link href="/reset-password" style={Styles.resetLink}>Reset now</Link>
+                    <Link href="/" style={Styles.resetLink}>Reset now</Link>
                 </View>
                 <TouchableOpacity style={Styles.login}>
                     <LinearGradient colors={['#00ffff', '#009dff']} style={Styles.loginButton}>
@@ -31,7 +26,7 @@ const Login = () => {
                 </TouchableOpacity>
                 <View style={Styles.register}>
                     <Text style={Styles.registerText}>Don't have an account? </Text>
-                    <Link href="/register" style={Styles.registerLink}>Register</Link>
+                    <Link href='/register' style={Styles.registerLink}>Register Now</Link>
                 </View>
             </SafeAreaView>
         </ScrollView>

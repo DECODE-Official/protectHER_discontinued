@@ -1,8 +1,8 @@
-import {View, Text, SafeAreaView } from 'react-native';
-import {Stack, useRouter} from "expo-router";
+import {SafeAreaView } from 'react-native';
+import {useRouter, Stack} from "expo-router";
 import LoadingScreen from "./LoadingScreen";
 import {useState} from "react";
-import Login from '../BeforeAuth/login'
+import Login from './auth/login'
 
 const Home = () => {
     const router = useRouter();
@@ -14,8 +14,7 @@ const Home = () => {
     <SafeAreaView>
         <Stack.Screen style={{backgroundColor: "#fff", flex: 1}}
             options={{
-                title: "",
-                headerShown: false,
+                header: () => null
             }}
         />
         {
