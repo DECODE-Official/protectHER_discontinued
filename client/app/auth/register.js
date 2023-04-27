@@ -10,11 +10,8 @@ const register = () => {
 
     let Theme = theme === 'light' ? LIGHT : DARK;
 
-    return (
-        <ScrollView style={Styles.view} contentContainerStyle={{
-            justifyContent: 'center',
-            height: '100%',
-            backgroundColor: Theme.background
+    return (<ScrollView style={Styles.view} contentContainerStyle={{
+            justifyContent: 'center', height: '100%', backgroundColor: Theme.background
         }}>
             <SafeAreaView style={Styles.container}>
                 <Stack.Screen options={{
@@ -24,16 +21,16 @@ const register = () => {
                 <View style={Styles.inputArea}>
                     <TextInput
                         style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]}
-                        placeholderTextColor={Theme.input_Color} placeholder="Email"/>
+                        placeholderTextColor='#818181' placeholder="Email"/>
                     <TextInput
                         style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]}
-                        placeholderTextColor={Theme.input_Color} placeholder="Phone No."/>
+                        placeholderTextColor='#818181' placeholder="Phone No."/>
                     <TextInput
                         style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]}
-                        placeholderTextColor={Theme.input_Color} secureTextEntry={true} placeholder="Create Password"/>
+                        placeholderTextColor='#818181' secureTextEntry={true} placeholder="Create Password"/>
                     <TextInput
                         style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]}
-                        placeholderTextColor={Theme.input_Color} secureTextEntry={true} placeholder="Confirm Password"/>
+                        placeholderTextColor='#818181' secureTextEntry={true} placeholder="Confirm Password"/>
                 </View>
                 <TouchableOpacity style={Styles.login}>
                     <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.loginButton}>
@@ -45,8 +42,7 @@ const register = () => {
                     <Link href='/login' style={[Styles.registerLink, {color: Theme.highlighted_Text}]}>Login Now</Link>
                 </View>
             </SafeAreaView>
-        </ScrollView>
-    )
+        </ScrollView>)
 }
 
 export default register

@@ -10,10 +10,10 @@ export const LIGHT = {
 
 // Styles for dark theme
 export const DARK = {
-    background: '#2C2C2C',
+    background: '#1f1f1f',
     primary_Text: '#fff',
     secondary_Text: '#fff',
     highlighted_Text: '#00B4FF',
-    input_Background: '#3d3d3d',
-    input_Color: '#818181'
+    input_Background: '#262626',
+    input_Color: '#ffffff'
 }
