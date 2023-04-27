@@ -1,11 +1,16 @@
-import {View, Text, SafeAreaView, Image} from 'react-native';
+import {View, Text, SafeAreaView, Image, useColorScheme} from 'react-native';
 import styles from '../Styles/LoadingStyle';
 import icon from '../assets/icon.png';
 import LottieView from "lottie-react-native";
+import {LIGHT, DARK} from "../Styles/GlobalStyles";
 
 const LoadingScreen = () => {
+
+    let theme = useColorScheme();
+
+    let Theme = theme === 'light' ? LIGHT : DARK;
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, {backgroundColor: Theme.background}]}>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={icon}/>
             </View>

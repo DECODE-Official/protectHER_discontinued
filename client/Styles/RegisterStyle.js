@@ -3,7 +3,6 @@ import {StyleSheet} from "react-native";
 const Styles = StyleSheet.create({
     view: {
         height: '100%',
-        backgroundColor: '#fff',
     },
     container: {
         alignItems: 'center',
@@ -14,7 +13,6 @@ const Styles = StyleSheet.create({
         textTransform: 'uppercase',
         textAlign: 'left',
         width: '80%',
-        color: '#363636',
         marginBottom: 25,
 
     },
@@ -58,11 +56,9 @@ const Styles = StyleSheet.create({
     registerText: {
         fontSize: 20,
         marginRight: 5,
-        color: '#808080',
     },
     registerLink: {
         fontSize: 20,
-        color: '#00B4FF',
     }
 })
 
