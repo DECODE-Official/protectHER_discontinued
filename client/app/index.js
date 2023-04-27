@@ -1,8 +1,8 @@
-import {SafeAreaView } from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {useRouter, Stack} from "expo-router";
 import LoadingScreen from "./LoadingScreen";
 import {useState} from "react";
-import Login from './auth/login'
+import Login from './login'
 
 const Home = () => {
     const router = useRouter();

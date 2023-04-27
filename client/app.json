@@ -1,12 +1,18 @@
 {
   "expo": {
+    "userInterfaceStyle": "automatic",
     "scheme": "acme",
     "icon": "./assets/icon.png",
+    "orientation": "portrait",
     "android": {
+      "userInterfaceStyle": "automatic",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
+    },
+    "ios": {
+      "userInterfaceStyle": "automatic"
     },
     "splash": {
       "image": "./assets/splash.png",
