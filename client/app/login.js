@@ -33,7 +33,7 @@ const Login = () => {
                 </TouchableOpacity>
                 <View style={Styles.register}>
                     <Text style={[Styles.registerText, {color: Theme.secondary_Text}]}>Don't have an account? </Text>
-                    <Link href='/auth/register' style={[Styles.registerLink, {color: Theme.highlighted_Text}]}>Register Now</Link>
+                    <Link href='/auth/Tutorial' style={[Styles.registerLink, {color: Theme.highlighted_Text}]}>Register Now</Link>
                 </View>
             </SafeAreaView>
         </ScrollView>
