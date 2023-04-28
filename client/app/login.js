@@ -6,12 +6,18 @@ import {LIGHT, DARK} from "../Styles/GlobalStyles";
 
 const Login = () => {
 
+    // Get the current theme
     const theme = useColorScheme();
-
     const Theme = theme === 'light' ? LIGHT : DARK;
 
-    return (
-        <ScrollView
+    // Array of input fields
+    const Input = [{
+        placeholder: 'Email/Phone No.', secureTextEntry: false
+    }, {
+        placeholder: 'Password', secureTextEntry: true
+    }]
+
+    return (<ScrollView
             contentContainerStyle={{justifyContent: 'center', height: '100%', backgroundColor: Theme.background}}>
             <SafeAreaView style={Styles.container}>
                 <Stack.Screen options={{
@@ -19,8 +25,13 @@ const Login = () => {
                 }}/>
                 <Text style={[Styles.text, {color: Theme.primary_Text}]}>Login</Text>
                 <View style={Styles.inputArea}>
-                    <TextInput style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]} placeholderTextColor={Theme.input_Color} placeholder="Email"/>
-                    <TextInput style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]} placeholderTextColor={Theme.input_Color} secureTextEntry={true} placeholder="Password"/>
+                    {// Map the input array to create the input fields
+                        Input.map((item) => {
+                            return (<TextInput style={[Styles.input, {
+                                    backgroundColor: Theme.input_Background, color: Theme.input_Color
+                                }]} placeholderTextColor='#808080' placeholder={item.placeholder}
+                                               secureTextEntry={item.secureTextEntry}/>)
+                        })}
                 </View>
                 <View style={Styles.resetPassword}>
                     <Text style={[Styles.passwordText, {color: Theme.secondary_Text}]}>Forgot Your Password? </Text>
@@ -33,11 +44,11 @@ const Login = () => {
                 </TouchableOpacity>
                 <View style={Styles.register}>
                     <Text style={[Styles.registerText, {color: Theme.secondary_Text}]}>Don't have an account? </Text>
-                    <Link href='/auth/Tutorial' style={[Styles.registerLink, {color: Theme.highlighted_Text}]}>Register Now</Link>
+                    <Link href='/auth/Tutorial' style={[Styles.registerLink, {color: Theme.highlighted_Text}]}>Register
+                        Now</Link>
                 </View>
             </SafeAreaView>
-        </ScrollView>
-    )
+        </ScrollView>)
 }
 
 export default Login;
