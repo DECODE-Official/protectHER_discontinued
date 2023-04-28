@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const app = express();
 const dotenv = require('dotenv');
 const bcrypt = require("bcrypt");
-const userRoutes = require("./routes/userRoutes");
+app.use(require("./routes/userRoutes"));
 const noteRoutes = require("./routes/noteRoutes");
 
 app.use(express.json());
-app.use("/users", userRoutes);
-app.use("/note",noteRoutes);
+// app.use("/users", userRoutes);
+// app.use("/note",noteRoutes);
 app.use(express.urlencoded({extended: false}))
 dotenv.config({path: './config.env'});
 
