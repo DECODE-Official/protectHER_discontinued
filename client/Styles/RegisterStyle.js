@@ -29,11 +29,11 @@ const Styles = StyleSheet.create({
         fontSize: 20,
         paddingHorizontal: 20
     },
-    login: {
+    register: {
         width: '80%',
         marginBottom: 50,
     },
-    loginButton: {
+    registerButton: {
         height: 70,
         width: '100%',
         alignItems: 'center',
@@ -42,22 +42,22 @@ const Styles = StyleSheet.create({
         elevation: 20,
         shadowColor: '#009dff'
     },
-    loginText: {
+    registerText: {
         fontSize: 30,
         color: '#fff',
         fontWeight: 'bold',
         textTransform: 'uppercase',
         letterSpacing: 5,
     },
-    register: {
+    login: {
         alignItems: 'center',
         flexDirection: 'row',
     },
-    registerText: {
+    loginText: {
         fontSize: 20,
         marginRight: 5,
     },
-    registerLink: {
+    loginLink: {
         fontSize: 20,
     }
 })
