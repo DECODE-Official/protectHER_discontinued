@@ -14,19 +14,12 @@ dotenv.config({path: './config.env'});
 
 require('./db/conn');
 
+
+
 const PORT = process.env.PORT;
 
 
-mongoose.connect("mongodb+srv://mensa:computerscience@cluster0.mwueqfy.mongodb.net/?retryWrites=true&w=majority")
-.then(() => {
-    app.listen(PORT, (err)=>{
-        if(err)
-        {
-            console.log(err);
-        }
-        console.log(`server started on port ${PORT}`);
-    })
-})
-.catch((error) => {
-    console.log(error);
+
+app.listen(PORT, (req, res)=>{
+    console.log(`Server listening at Port ${PORT}`);
 })
