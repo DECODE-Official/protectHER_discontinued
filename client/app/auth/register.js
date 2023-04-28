@@ -12,13 +12,13 @@ const register = () => {
 
     // Input array to create TextInput
     const Input = [{
-        placeholder: "Email", secureTextEntry: false
+        placeholder: "Email", secureTextEntry: false, _id: 1
     }, {
-        placeholder: "Phone No.", secureTextEntry: false
+        placeholder: "Phone No.", secureTextEntry: false, _id: 2
     }, {
-        placeholder: "Create Password", secureTextEntry: true
+        placeholder: "Create Password", secureTextEntry: true, _id: 3
     }, {
-        placeholder: "Confirm Password", secureTextEntry: true
+        placeholder: "Confirm Password", secureTextEntry: true, _id: 4
     }]
 
     return (<ScrollView style={Styles.view} contentContainerStyle={{
@@ -32,7 +32,7 @@ const register = () => {
             <View style={Styles.inputArea}>
                 {// Mapping the Input array to create TextInput for each item
                     Input.map((item) => {
-                        return (<TextInput style={[Styles.input, {
+                        return (<TextInput key={item._id} style={[Styles.input, {
                             backgroundColor: Theme.input_Background, color: Theme.input_Color
                         }]} placeholderTextColor='#818181' placeholder={item.placeholder}
                                            secureTextEntry={item.secureTextEntry}/>)
