@@ -1,4 +1,4 @@
-import {View, SafeAreaView, Text, useColorScheme, Button, PermissionsAndroid} from "react-native";
+import {View, SafeAreaView, Text, useColorScheme, Button} from "react-native";
 import {Stack} from "expo-router";
 import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import {Camera, CameraType} from "expo-camera";
@@ -6,13 +6,38 @@ import {useState} from "react";
 import * as Location from "expo-location";
 
 const Permissions = () => {
-
+    // Camera
     const [type, setType] = useState(CameraType.back);
+
+    // Permissions
     const [cameraPermission, requestCameraPermission] = Camera.useCameraPermissions();
-    const [audioPermission, getAudioPermission] = Camera.useMicrophonePermissions();
+    const [audioPermission, requestAudioPermission] = Camera.useMicrophonePermissions();
     const [locationPermission, requestLocationPermission] = Location.useForegroundPermissions();
 
-    console.log(cameraPermission.status)
+    // Permissions Functions
+    async function checkCameraPermissions() {
+        let CameraPermission = await cameraPermission.status;
+        if (CameraPermission !== 'granted') {
+            await requestCameraPermission();
+        }
+        CameraPermission === 'granted' ? console.log("permission granted for camera") : console.log("permission denied for camera");
+    }
+
+    async function checkAudioPermissions() {
+        let AudioPermission = await audioPermission.status;
+        if (AudioPermission !== 'granted') {
+            await requestAudioPermission();
+        }
+        AudioPermission === 'granted' ? console.log("permission granted for audio") : console.log("permission denied for audio");
+    }
+
+    async function checkLocationPermissions() {
+        let LocationPermission = await locationPermission.status;
+        if (LocationPermission !== 'granted') {
+            await requestLocationPermission();
+        }
+        LocationPermission === 'granted' ? console.log("permission granted for location") : console.log("permission denied for location");
+    }
 
     //------------------------------------------------------------------------------------
 
@@ -25,9 +50,9 @@ const Permissions = () => {
         <Stack.Screen options={{
             headerShown: false
         }}/>
-        <Button title={'Request Camera Permission'} onPress={() => requestCameraPermission()}/>
-        <Button title={'Request Audio Permission'} onPress={() => getAudioPermission()}/>
-        <Button title={'Request Location Permission'} onPress={() => requestLocationPermission()}/>
+        <Button title={'Request Camera Permission'} onPress={() => checkCameraPermissions()}/>
+        <Button title={'Request Audio Permission'} onPress={() => checkAudioPermissions()}/>
+        <Button title={'Request Location Permission'} onPress={() => checkLocationPermissions()}/>
         <View>
         </View>
     </SafeAreaView>)
