@@ -21,15 +21,8 @@ const userSchema = new mongoose.Schema({
     confirm_password:{
         type:String,
         required:true
-    },
-    gurdian_1_no:{
-        type:Number,
-        required:true
-    },
-    gurdian_2_no:{
-        type:Number,
-        required:true
     }
+    
 })
 
 
