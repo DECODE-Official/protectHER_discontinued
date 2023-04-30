@@ -1,9 +1,11 @@
 import {StyleSheet} from "react-native";
 
 const Styles = StyleSheet.create({
+    view: {
+        height: '100%',
+    },
     container: {
         alignItems: 'center',
-        justifyContent: 'center',
     },
     text: {
         fontSize: 50,
@@ -16,32 +18,22 @@ const Styles = StyleSheet.create({
     },
     inputArea: {
         width: '80%',
-        height: '30%',
+        height: 400,
+        justifyContent: "space-between",
         marginBottom: 50,
-        justifyContent: 'space-between'
     },
     input: {
-        height: 80,
+        height: 70,
+        backgroundColor: '#f8f8f8',
         borderRadius: 20,
-        gap: 30,
         fontSize: 20,
         paddingHorizontal: 20
     },
-    resetPassword: {
-        alignItems: 'center',
-        marginBottom: 50
-    },
-    passwordText: {
-        fontSize: 20,
-    },
-    resetLink: {
-        fontSize: 20,
-    },
-    login: {
+    register: {
         width: '80%',
         marginBottom: 50,
     },
-    loginButton: {
+    registerButton: {
         height: 70,
         width: '100%',
         alignItems: 'center',
@@ -50,25 +42,23 @@ const Styles = StyleSheet.create({
         elevation: 20,
         shadowColor: '#009dff'
     },
-    loginText: {
+    registerText: {
         fontSize: 30,
         color: '#fff',
         fontWeight: 'bold',
         textTransform: 'uppercase',
         letterSpacing: 5,
     },
-    register: {
+    login: {
         alignItems: 'center',
         flexDirection: 'row',
     },
-    registerText: {
+    loginText: {
         fontSize: 20,
         marginRight: 5,
-        color: '#808080',
     },
-    registerLink: {
+    loginLink: {
         fontSize: 20,
-        color: '#00B4FF',
     }
 })
 
