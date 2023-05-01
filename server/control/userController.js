@@ -3,9 +3,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const register = async(req, res) => {
-    const {name,email,phone_no,password,confirm_password,gurdian_1_no,gurdian_2_no} = req.body;
+    const {name,email,phone_no,password,confirm_password} = req.body;
 
-    if(!name || !email || !phone_no || !password || !confirm_password || !gurdian_1_no || !gurdian_2_no)
+    if(!name || !email || !phone_no || !password || !confirm_password )
     {
         return res.status(402).json({error : "Please fill all the necessary details."});
     }
@@ -34,8 +34,7 @@ const register = async(req, res) => {
             phone_no: phone_no,
             password: hashedpassword,
             confirm_password:confirm_password,
-            gurdian_1_no:gurdian_1_no,
-            gurdian_2_no:gurdian_2_no
+           
             });
             
         }

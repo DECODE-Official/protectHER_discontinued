@@ -3,21 +3,23 @@ const mongoose = require('mongoose');
 const app = express();
 const dotenv = require('dotenv');
 const bcrypt = require("bcrypt");
-app.use(require("./routes/userRoutes"));
+
+const userRoutes = require("./routes/userRoutes");
 const noteRoutes = require("./routes/noteRoutes");
 
 app.use(express.json());
-// app.use("/users", userRoutes);
-// app.use("/note",noteRoutes);
+
+app.use("/users", userRoutes);
+app.use("/note",noteRoutes);
+
 app.use(express.urlencoded({extended: false}))
+
 dotenv.config({path: './config.env'});
 
 require('./db/conn');
 
 
-
 const PORT = process.env.PORT;
-
 
 
 app.listen(PORT, (req, res)=>{
