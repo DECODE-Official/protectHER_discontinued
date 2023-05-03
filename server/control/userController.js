@@ -28,14 +28,15 @@ const register = async(req, res) => {
         }
         else
         {
-            const hashedpassword = await bcrypt.hash(password,10);
+            const hashed_password = await bcrypt.hash(password,10);
+            const hashed_confirm_password = await bcrypt.hash(confirm_password, 10);
 
             const result = await userModel.create({
             name:name,
             email: email,
             phone_no: phone_no,
-            password: hashedpassword,
-            confirm_password:confirm_password,
+            password: hashed_password,
+            confirm_password:hashed_confirm_password,
            
             });
             return res.json({message: "User Registered Sucessfully"});
