@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    phone_no:{
+        type:Number,
+        required:true
+    },
     password:{
         type:String,
         required:true
@@ -17,15 +21,8 @@ const userSchema = new mongoose.Schema({
     confirm_password:{
         type:String,
         required:true
-    },
-    gurdian_1_no:{
-        type:Number,
-        required:true
-    },
-    gurdian_2_no:{
-        type:Number,
-        required:true
     }
+    
 })
 
 

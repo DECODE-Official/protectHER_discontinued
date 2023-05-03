@@ -12,9 +12,9 @@ const Login = () => {
 
     // Array of input fields
     const Input = [{
-        placeholder: 'Email/Phone No.', secureTextEntry: false
+        placeholder: 'Email/Phone No.', secureTextEntry: false, _id: 1
     }, {
-        placeholder: 'Password', secureTextEntry: true
+        placeholder: 'Password', secureTextEntry: true, _id: 2
     }]
 
     return (<ScrollView
@@ -27,7 +27,7 @@ const Login = () => {
                 <View style={Styles.inputArea}>
                     {// Map the input array to create the input fields
                         Input.map((item) => {
-                            return (<TextInput style={[Styles.input, {
+                            return (<TextInput key={item._id} style={[Styles.input, {
                                     backgroundColor: Theme.input_Background, color: Theme.input_Color
                                 }]} placeholderTextColor='#808080' placeholder={item.placeholder}
                                                secureTextEntry={item.secureTextEntry}/>)

@@ -33,7 +33,7 @@ const Tutorial = () => {
             </View>
             <Text style={[Styles.InfoText, {color: Theme.secondary_Text}]}>Ensure your safety with just one tap
                 👆️ </Text>
-            <Link href='/auth/register'>
+            <Link href='/auth/permissions'>
                 <LinearGradient colors={['#5fcfff', '#00a0e5']}  style={Styles.NextButton}>
                     <Icon name="arrowright" size={30} color="#fff"/>
                 </LinearGradient>
