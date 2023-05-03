@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const register = async(req, res) => {
+    
+
     const {name,email,phone_no,password,confirm_password} = req.body;
 
     if(!name || !email || !phone_no || !password || !confirm_password )
@@ -14,15 +16,15 @@ const register = async(req, res) => {
         const existingUser = await userModel.findOne({email:email});
         const existingPhone_no = await userModel.findOne({phone_no:phone_no});
         if(existingUser){
-            return res.status(400).json({message: "user already exists"})
+            return res.status(400).json({message: "user already exists!"})
         }
         if(password !== confirm_password)
         {
-            return res.json({message : "Password doesn't match"});
+            return res.json({message : "Password doesn't match!"});
         }
         if(existingPhone_no)
         {
-            return res.status(400).json({message: "Phone no already exists"});
+            return res.status(400).json({message: "Phone no already exists!"});
         }
         else
         {
@@ -36,6 +38,7 @@ const register = async(req, res) => {
             confirm_password:confirm_password,
            
             });
+            return res.json({message: "User Registered Sucessfully"});
             
         }
     }
@@ -69,7 +72,7 @@ const login = async (req, res) => {
 
             if(matchPassword)
             {
-                return res.status(200).json({message: "User Signin Successfully"});
+                return res.status(200).json({message: "Login Successfully"});
             }
             else
             {
