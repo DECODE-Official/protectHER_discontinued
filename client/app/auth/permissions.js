@@ -13,7 +13,6 @@ import PermissionMessage from "./PermissionMessage";
 const Permissions = () => {
 
     const Router = useRouter();
-    const [allowed, setAllowed] = useState(false);
     const [message, setMessage] = useState(false)
 
     // setting show of message to specify the need for permissions
