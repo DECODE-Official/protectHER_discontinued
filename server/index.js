@@ -18,6 +18,9 @@ dotenv.config({path: './config.env'});
 
 require('./db/conn');
 
+app.get("/", (req, res)=>{
+    res.send(`<h1>Home Page</h1>`);
+})
 
 const PORT = process.env.PORT;
 
