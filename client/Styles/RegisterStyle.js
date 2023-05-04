@@ -59,6 +59,11 @@ const Styles = StyleSheet.create({
     },
     loginLink: {
         fontSize: 20,
+    },
+    Form: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
 
