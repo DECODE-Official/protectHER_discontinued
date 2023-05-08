@@ -12,13 +12,6 @@ const Login = () => {
     const theme = useColorScheme();
     const Theme = theme === 'light' ? LIGHT : DARK;
 
-    // Array of input fields
-    const Input = [{
-        placeholder: 'Email/Phone No.', secureTextEntry: false, _id: 1
-    }, {
-        placeholder: 'Password', secureTextEntry: true, _id: 2
-    }]
-
     return (<ScrollView
         contentContainerStyle={{justifyContent: 'center', height: '100%', backgroundColor: Theme.background}}>
         <SafeAreaView style={Styles.container}>
@@ -40,7 +33,7 @@ const Login = () => {
                             <Text style={{color: 'red', fontWeight: '100'}}>{errors.phone}</Text> : null}
                         <TextInput
                             style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]}
-                            placeholder='Password' placeholderTextColor={Theme.secondary_Text}
+                            placeholder='Password' placeholderTextColor={Theme.secondary_Text} secureTextEntry={true}
                             onChangeText={handleChange('password')} onBlur={handleBlur('password')}
                             value={values.password}/>
                         {errors.password && touched.password ?
