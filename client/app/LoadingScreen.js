@@ -14,11 +14,11 @@ const LoadingScreen = () => {
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={icon}/>
             </View>
-            <Text style={styles.text}>protectHER</Text>
+            <Text style={[styles.text, {color: Theme.primary_Text}]}>protectHER</Text>
             <LottieView source={require('../json/loading.json')} autoPlay loop
                                 style={{height: 100, width: 100}}/>
-            <Text>Loading...</Text>
-            <Text style={styles.BottomText}>Ensure her Protection with just a tap</Text>
+            <Text style={{color: Theme.secondary_Text}} >Loading...</Text>
+            <Text style={[styles.BottomText, {color: Theme.secondary_Text}]}>Ensure her Protection with just a tap</Text>
         </SafeAreaView>
     )
 }

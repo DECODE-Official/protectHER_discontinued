@@ -16,7 +16,7 @@ const Styles = StyleSheet.create({
     },
     inputArea: {
         width: '80%',
-        height: '30%',
+        height: '40%',
         marginBottom: 50,
         justifyContent: 'space-between'
     },
@@ -69,6 +69,11 @@ const Styles = StyleSheet.create({
     registerLink: {
         fontSize: 20,
         color: '#00B4FF',
+    },
+    Form: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
 
