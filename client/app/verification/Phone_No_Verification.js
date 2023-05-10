@@ -1,5 +1,5 @@
 import {View, Text, ScrollView, SafeAreaView, useColorScheme, TextInput, TouchableOpacity} from "react-native";
-import {Stack} from "expo-router";
+import {Stack, useRouter} from "expo-router";
 import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import Styles from "../../Styles/Phone_Verification_Styles";
 import Icon from 'react-native-vector-icons/Feather';
@@ -10,6 +10,7 @@ import {LinearGradient} from "expo-linear-gradient";
 const Phone_No_Verification = () => {
     let theme = useColorScheme();
     let Theme = theme === 'light' ? LIGHT : DARK;
+    const router = useRouter();
     return (<ScrollView
         contentContainerStyle={{justifyContent: 'center', height: '100%', backgroundColor: Theme.background}}>
         <SafeAreaView style={Styles.container}>
@@ -35,8 +36,8 @@ const Phone_No_Verification = () => {
                         {errors.phone && touched.phone ?
                             <Text style={{color: 'red', fontWeight: '400'}}>{errors.phone}</Text> : null}
                     </View>
-                    <TouchableOpacity onPress={handleSubmit}>
-                        <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.otpButton}>
+                    <TouchableOpacity onPress={() => router.push('/verification/otp_verification')}>
+                        <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.otpButton} >
                             <Text style={Styles.otpText}>CONTINUE</Text>
                         </LinearGradient>
                     </TouchableOpacity>
