@@ -22,9 +22,44 @@ const Styles = StyleSheet.create({
     heading: {
         fontSize: 50,
         fontWeight: 'bold',
-        marginBottom: 20,
+        marginBottom: 50,
         textTransform: 'uppercase',
-        letterSpacing: 2
+        letterSpacing: 2,
+        textAlign: 'center',
+    },
+    inputArea: {
+        width: '80%',
+        marginBottom: 25,
+    },
+    input: {
+        height: 70,
+        borderRadius: 20,
+        paddingHorizontal: 20,
+        fontSize: 20,
+        textAlign: 'left',
+    },
+    infoSec: {
+        flexDirection: 'row',
+        marginBottom: 50,
+    },
+    inputInfo: {
+        fontSize: 15,
+        marginRight: 5,
+    },
+    otpButton: {
+        height: 70,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 20,
+        elevation: 20,
+        shadowColor: '#009dff',
+    },
+    otpText: {
+        fontSize: 30,
+        color: '#fff',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        letterSpacing: 5,
     }
 })
 
