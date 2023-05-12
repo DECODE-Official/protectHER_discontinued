@@ -1,10 +1,11 @@
-import {View, Text, SafeAreaView, ScrollView, TextInput, TouchableOpacity, useColorScheme} from "react-native";
+import {View, Text, SafeAreaView, ScrollView, TextInput, useColorScheme} from "react-native";
 import {Link, Stack} from "expo-router";
-import {LinearGradient} from "expo-linear-gradient";
+import {Gstyles} from "../../Styles/GlobalStyles";
 import Styles from "../../Styles/RegisterStyle";
 import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import {Formik} from "formik";
 import {registerSchema} from "../schemas";
+import {Button, Input, Heading} from "../components/reusable_unauth";
 
 const register = () => {
 
@@ -21,48 +22,38 @@ const register = () => {
             <Stack.Screen options={{
                 headerShown: false
             }}/>
-            <Text style={[Styles.text, {color: Theme.primary_Text}]}>Register</Text>
+            <Heading heading={'Register'} />
             <Formik initialValues={{
                 email: '', phone: '', password: '', confirmPassword: ''
             }} onSubmit={values => console.log(values)} validationSchema={registerSchema}>
                 {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (<View style={Styles.Form}>
-                    <View style={Styles.inputArea}>
-                        <TextInput style={[Styles.input, {
-                            backgroundColor: Theme.input_Background, color: Theme.input_Color
-                        }]} placeholder='Email'
-                                   placeholderTextColor={Theme.secondary_Text} onChangeText={handleChange('email')}
-                                   onBlur={handleBlur('email')} value={values.email}/>
+                    <View style={[Gstyles.inputArea, {height: 400}]}>
+                        {/*Name*/}
+                        <Input title='Email' keyboard='email-address' textChange={handleChange('email')}
+                               handleblur={handleBlur('email')} values={values.email}/>
                         {errors.email && touched.email ?
                             <Text style={{color: 'red', position: 'relative', top: 0}}>{errors.email}</Text> : null}
-                        <TextInput style={[Styles.input, {
-                            backgroundColor: Theme.input_Background, color: Theme.input_Color
-                        }]} placeholder='Phone'
-                                   placeholderTextColor={Theme.secondary_Text} onChangeText={handleChange('phone')}
-                                   onBlur={handleBlur('phone')} value={values.phone}/>
+
+                        {/*Phone*/}
+                        <Input title='Phone No.' keyboard={'number-pad'} textChange={handleChange('phone')}
+                               handleblur={handleBlur('phone')} values={values.phone}/>
                         {errors.phone && touched.phone ?
                             <Text style={{color: 'red', position: 'relative', top: 0}}>{errors.phone}</Text> : null}
-                        <TextInput style={[Styles.input, {
-                            backgroundColor: Theme.input_Background, color: Theme.input_Color
-                        }]} placeholder='Create Password'
-                                   placeholderTextColor={Theme.secondary_Text}
-                                   onChangeText={handleChange('password')} secureTextEntry={true}
-                                   onBlur={handleBlur('password')} value={values.password}/>
+
+                        {/*Password*/}
+                        <Input title='Create Password' keyboard={'default'} textChange={handleChange('password')}
+                               handleblur={handleBlur('password')} values={values.password}/>
                         {errors.password && touched.password ?
                             <Text style={{color: 'red', position: 'relative', top: 0}}>{errors.password}</Text> : null}
-                        <TextInput style={[Styles.input, {
-                            backgroundColor: Theme.input_Background, color: Theme.input_Color
-                        }]} placeholder='Comfirm Password'
-                                   placeholderTextColor={Theme.secondary_Text}
-                                   onChangeText={handleChange('confirmPassword')}
-                                   onBlur={handleBlur('confirmPassword')} value={values.confirmPassword}/>
+
+                        {/*Confirm Password*/}
+                        <Input title='Confirm Password' keyboard={'default'}
+                               textChange={handleChange('confirmPassword')}
+                               handleblur={handleBlur('confirmPassword')} values={values.confirmPassword}/>
                         {errors.confirmPassword && touched.confirmPassword ? <Text
                             style={{color: 'red', position: 'relative', top: 0}}>{errors.confirmPassword}</Text> : null}
                     </View>
-                    <TouchableOpacity style={Styles.register} onPress={handleSubmit}>
-                        <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.registerButton}>
-                            <Text style={Styles.registerText}>Register</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
+                    <Button text='Register' onpress={handleSubmit}/>
                 </View>)}
             </Formik>
 
