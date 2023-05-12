@@ -1,10 +1,11 @@
-import {View, Text, SafeAreaView, TextInput, TouchableOpacity, ScrollView, useColorScheme} from "react-native";
+import {View, Text, SafeAreaView, TextInput, ScrollView, useColorScheme} from "react-native";
 import Styles from '../Styles/LoginScreenStyle';
-import {LinearGradient} from "expo-linear-gradient";
 import {Link, Stack} from "expo-router";
 import {LIGHT, DARK} from "../Styles/GlobalStyles";
 import {Formik} from "formik";
+import {Gstyles} from "../Styles/GlobalStyles";
 import {loginSchema} from "./schemas";
+import {Button, Input, Heading} from "./components/reusable_unauth";
 
 const Login = () => {
 
@@ -18,37 +19,30 @@ const Login = () => {
             <Stack.Screen options={{
                 headerShown: false
             }}/>
-            <Text style={[Styles.text, {color: Theme.primary_Text}]}>Login</Text>
+            <Heading heading={'Login'} />
             <Formik initialValues={{
                 email: '', phone: '', password: ''
             }} onSubmit={values => console.log(values)} validationSchema={loginSchema}>
                 {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (<View style={Styles.Form}>
-                    <View style={Styles.inputArea}>
-                        <TextInput
-                            style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]}
-                            placeholder='Phone No.'
-                            placeholderTextColor={Theme.secondary_Text} onChangeText={handleChange('phone')}
-                            onBlur={handleBlur('phone')} value={values.phone}/>
+                    <View style={[Gstyles.inputArea, {height: 200}]}>
+                        <Input title={'Phone No.'} keyboard={'phone-pad'}
+                               textChange={handleChange('phone')} handleblur={handleBlur('phone')}
+                               values={values.phone}/>
                         {errors.phone && touched.phone ?
                             <Text style={{color: 'red', fontWeight: '100'}}>{errors.phone}</Text> : null}
-                        <TextInput
-                            style={[Styles.input, {backgroundColor: Theme.input_Background, color: Theme.input_Color}]}
-                            placeholder='Password' placeholderTextColor={Theme.secondary_Text} secureTextEntry={true}
-                            onChangeText={handleChange('password')} onBlur={handleBlur('password')}
-                            value={values.password}/>
+                        <Input title={'password'} keyboard={'default'}
+                               textChange={handleChange('password')} handleblur={handleBlur('password')}
+                               values={values.password}/>
                         {errors.password && touched.password ?
                             <Text style={{color: 'red', fontWeight: '100'}}>{errors.password}</Text> : null}
                     </View>
-                    <TouchableOpacity style={Styles.login} onPress={handleSubmit}>
-                        <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.loginButton}>
-                            <Text style={Styles.loginText}>LOGIN</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
+                    <Button text='Login' onpress={handleSubmit}/>
                 </View>)}
             </Formik>
             <View style={Styles.resetPassword}>
                 <Text style={[Styles.passwordText, {color: Theme.secondary_Text}]}>Forgot Your Password? </Text>
-                <Link href="/verification/Phone_No_Verification" style={[Styles.resetLink, {color: Theme.highlighted_Text}]}>Reset now</Link>
+                <Link href="/verification/Phone_No_Verification"
+                      style={[Styles.resetLink, {color: Theme.highlighted_Text}]}>Reset now</Link>
             </View>
             <View style={Styles.register}>
                 <Text style={[Styles.registerText, {color: Theme.secondary_Text}]}>Don't have an account? </Text>

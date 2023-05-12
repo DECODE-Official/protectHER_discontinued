@@ -16,8 +16,6 @@ const Styles = StyleSheet.create({
     },
     inputArea: {
         width: '80%',
-        height: '40%',
-        marginBottom: 50,
         justifyContent: 'space-between'
     },
     input: {
