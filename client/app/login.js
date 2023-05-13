@@ -6,12 +6,12 @@ import {Formik} from "formik";
 import {Gstyles} from "../Styles/GlobalStyles";
 import {loginSchema} from "./schemas";
 import {Button, Input, Heading} from "./components/reusable_unauth";
+import {themeProvider} from "./themProvider";
 
 const Login = () => {
 
     // Get the current theme
-    const theme = useColorScheme();
-    const Theme = theme === 'light' ? LIGHT : DARK;
+    let Theme = themeProvider();
 
     return (<ScrollView
         contentContainerStyle={{justifyContent: 'center', height: '100%', backgroundColor: Theme.background}}>

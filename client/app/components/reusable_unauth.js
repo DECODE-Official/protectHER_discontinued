@@ -5,8 +5,8 @@ import {Gstyles, LIGHT, DARK} from "../../Styles/GlobalStyles";
 
 export const Button = (props) => {
     return (
-        <TouchableOpacity style={Gstyles.button} onPress={props.onpress}>
-            <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Gstyles.buttonBg}>
+        <TouchableOpacity style={Gstyles.button} onPress={props.onpress} activeOpacity={1} >
+            <LinearGradient colors={['#5fcfff', '#00a0e5']} style={[Gstyles.buttonBg, {width: props.width || '100%'}]}>
                 <Text style={Gstyles.buttonText}>{props.text}</Text>
             </LinearGradient>
         </TouchableOpacity>

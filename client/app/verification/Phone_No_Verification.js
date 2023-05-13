@@ -1,16 +1,19 @@
-import {View, Text, ScrollView, SafeAreaView, useColorScheme, TextInput, TouchableOpacity} from "react-native";
+import {View, Text, ScrollView, SafeAreaView, TextInput, TouchableOpacity} from "react-native";
 import {Stack, useRouter} from "expo-router";
-import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import Styles from "../../Styles/Phone_Verification_Styles";
 import Icon from 'react-native-vector-icons/Feather';
 import {Formik} from "formik";
 import {loginSchema} from "../schemas";
 import {LinearGradient} from "expo-linear-gradient";
+import {themeProvider} from "../themProvider";
+import {Button} from "../components/reusable_unauth";
 
 const Phone_No_Verification = () => {
-    let theme = useColorScheme();
-    let Theme = theme === 'light' ? LIGHT : DARK;
+
+    let Theme = themeProvider();
+
     const router = useRouter();
+
     return (<ScrollView
         contentContainerStyle={{justifyContent: 'center', height: '100%', backgroundColor: Theme.background}}>
         <SafeAreaView style={Styles.container}>
@@ -23,7 +26,7 @@ const Phone_No_Verification = () => {
             <Text style={[Styles.heading, {color: Theme.primary_Text}]}>Forgot Password?</Text>
             <Formik initialValues={{
                 email: '', phone: '', password: ''
-            }} onSubmit={values => console.log(values)} validationSchema={loginSchema}>
+            }} onSubmit={() => router.push('/verification/otp_verification')} validationSchema={loginSchema}>
                 {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (<View style={Styles.Form}>
                     <View style={Styles.inputArea}>
                         <TextInput
@@ -36,11 +39,7 @@ const Phone_No_Verification = () => {
                         {errors.phone && touched.phone ?
                             <Text style={{color: 'red', fontWeight: '400'}}>{errors.phone}</Text> : null}
                     </View>
-                    <TouchableOpacity onPress={() => router.push('/verification/otp_verification')}>
-                        <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.otpButton} >
-                            <Text style={Styles.otpText}>CONTINUE</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
+                    <Button text={'continue'} onpress={handleSubmit} />
                 </View>)}
             </Formik>
             <View style={Styles.footer} >
