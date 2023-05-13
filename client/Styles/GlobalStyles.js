@@ -33,6 +33,11 @@ export const Gstyles = StyleSheet.create({
         textTransform: 'uppercase',
         width: '80%',
     },
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+    },
     button: {
         width: '80%',
         marginBottom: 50,

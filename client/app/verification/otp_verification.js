@@ -4,7 +4,7 @@ import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import Styles from "../../Styles/otp_verification_styles";
 import {LinearGradient} from "expo-linear-gradient";
 import {useRouter} from "expo-router";
-import {Button} from "../components/reusable_unauth";
+import {Button, Input, Screen} from "../components/reusable_unauth";
 
 const otp_verification = () => {
 
@@ -12,34 +12,22 @@ const otp_verification = () => {
 
     let theme = useColorScheme();
     let Theme = theme === 'light' ? LIGHT : DARK;
-    return (<ScrollView
-        contentContainerStyle={{
-            justifyContent: 'center',
-            height: '100%',
-            backgroundColor: Theme.background
-        }}>
-        <SafeAreaView style={Styles.container}>
-            <Stack.Screen options={{
-                headerShown: false
-            }}/>
+    return (
+        <Screen>
             <Text style={Styles.icon}>******</Text>
             <View style={Styles.HeadingSec}>
                 <Text style={[Styles.heading, {color: Theme.primary_Text}]}>Verify otp</Text>
             </View>
             <View style={Styles.inputArea}>
-                <TextInput placeholder={'Enter the six digit pin'} style={[Styles.input, {
-                    backgroundColor: Theme.input_Background, color: Theme.input_Color
-                }]} keyboardType='number-pad' maxLength={6} placeholderTextColor={Theme.secondary_Text}/>
+                <Input title={'Enter six digit otp'} maxLength={6} keyboard={'numeric'}/>
             </View>
-            <View style={Styles.infoSec} >
+            <View style={Styles.infoSec}>
                 <Text style={[Styles.inputInfo, {color: Theme.secondary_Text}]}>Didn't received any otp?</Text>
-                <Text style={[Styles.inputInfo, {color: Theme.highlighted_Text}]} >Resend OTP</Text>
+                <Text style={[Styles.inputInfo, {color: Theme.highlighted_Text}]}>Resend OTP</Text>
             </View>
 
-            <Button onpress={() => router.push('/auth/Password_Reset')} text={'Continue'} />
-
-        </SafeAreaView>
-    </ScrollView>);
+            <Button onpress={() => router.push('/auth/Password_Reset')} text={'Continue'}/>
+        </Screen>);
 }
 
 export default otp_verification;
