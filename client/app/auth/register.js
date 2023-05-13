@@ -1,12 +1,11 @@
-import {View, Text, SafeAreaView, ScrollView, useColorScheme} from "react-native";
-import {Link, Stack} from "expo-router";
+import {View, Text} from "react-native";
+import {Link} from "expo-router";
 import {Gstyles} from "../../Styles/GlobalStyles";
 import Styles from "../../Styles/RegisterStyle";
-import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import {Formik} from "formik";
 import {registerSchema} from "../schemas";
-import {Button, Input, Heading} from "../components/reusable_unauth";
-import {themeProvider} from "../themProvider";
+import {Button, Input, Heading, Screen} from "../components/reusable_unauth";
+import {themeProvider} from "../components/themProvider";
 
 const register = () => {
 
@@ -15,14 +14,9 @@ const register = () => {
     let Theme = themeProvider()
 
 
-    return (<ScrollView style={Styles.view} contentContainerStyle={{
-        justifyContent: 'center', height: '100%', backgroundColor: Theme.background
-    }}>
-        <SafeAreaView style={Styles.container}>
-            <Stack.Screen options={{
-                headerShown: false
-            }}/>
-            <Heading heading={'Register'} />
+    return (
+        <Screen>
+            <Heading heading={'Register'}/>
             <Formik initialValues={{
                 email: '', phone: '', password: '', confirmPassword: ''
             }} onSubmit={values => console.log(values)} validationSchema={registerSchema}>
@@ -61,8 +55,7 @@ const register = () => {
                 <Text style={[Styles.loginText, {color: Theme.secondary_Text}]}>Already have an account? </Text>
                 <Link href='/login' style={[Styles.loginLink, {color: Theme.highlighted_Text}]}>Login Now</Link>
             </View>
-        </SafeAreaView>
-    </ScrollView>)
+        </Screen>)
 }
 
 export default register

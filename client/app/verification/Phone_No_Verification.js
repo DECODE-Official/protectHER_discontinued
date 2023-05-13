@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/Feather';
 import {Formik} from "formik";
 import {loginSchema} from "../schemas";
 import {LinearGradient} from "expo-linear-gradient";
-import {themeProvider} from "../themProvider";
-import {Button} from "../components/reusable_unauth";
+import {themeProvider} from "../components/themProvider";
+import {Button, Input, Screen} from "../components/reusable_unauth";
 
 const Phone_No_Verification = () => {
 
@@ -14,39 +14,35 @@ const Phone_No_Verification = () => {
 
     const router = useRouter();
 
-    return (<ScrollView
-        contentContainerStyle={{justifyContent: 'center', height: '100%', backgroundColor: Theme.background}}>
-        <SafeAreaView style={Styles.container}>
-            <Stack.Screen options={{
-                headerShown: false
-            }}/>
+    function phoneVerification() {
+        router.push('/verification/otp_verification')
+    }
+
+    return (
+        <Screen>
             <View style={Styles.icon}>
                 <Icon name="unlock" size={25} color="#009dff"/>
             </View>
             <Text style={[Styles.heading, {color: Theme.primary_Text}]}>Forgot Password?</Text>
             <Formik initialValues={{
-                email: '', phone: '', password: ''
-            }} onSubmit={() => router.push('/verification/otp_verification')} validationSchema={loginSchema}>
+                phone: ''
+            }}>
                 {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (<View style={Styles.Form}>
                     <View style={Styles.inputArea}>
-                        <TextInput
-                            style={[Styles.input, {
-                                backgroundColor: Theme.input_Background, color: Theme.input_Color
-                            }]}
-                            placeholder='Enter your Phone no.'
-                            placeholderTextColor={Theme.secondary_Text} onChangeText={handleChange('phone')}
-                            onBlur={handleBlur('phone')} value={values.phone}/>
+                        <Input title={'Enter your phone No.'} keyboard={'phone-pad'}
+                               textChange={handleChange('phone')} handleblur={handleBlur('phone')}
+                               values={values.phone}/>
                         {errors.phone && touched.phone ?
                             <Text style={{color: 'red', fontWeight: '400'}}>{errors.phone}</Text> : null}
                     </View>
-                    <Button text={'continue'} onpress={handleSubmit} />
+                    <Button text={'continue'} onpress={() => phoneVerification()}/>
                 </View>)}
             </Formik>
-            <View style={Styles.footer} >
-                <Text style={[Styles.footerText, {color: Theme.secondary_Text}]} >Forgot your password? Don’t Worry we got you covered just verify yourself & follow the guided steps to reset your password</Text>
+            <View style={Styles.footer}>
+                <Text style={[Styles.footerText, {color: Theme.secondary_Text}]}>Forgot your password? Don’t Worry we
+                    got you covered just verify yourself & follow the guided steps to reset your password</Text>
             </View>
-        </SafeAreaView>
-    </ScrollView>)
+        </Screen>)
 }
 
 export default Phone_No_Verification;

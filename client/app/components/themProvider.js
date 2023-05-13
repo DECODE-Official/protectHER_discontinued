@@ -1,5 +1,5 @@
 import {useColorScheme} from "react-native";
-import {LIGHT, DARK} from "../Styles/GlobalStyles";
+import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 
 export const themeProvider = () => {
     let theme = useColorScheme();
