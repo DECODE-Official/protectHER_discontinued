@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView, TextInput, useColorScheme} from "react-native";
+import {View, Text, SafeAreaView, ScrollView, useColorScheme} from "react-native";
 import {Link, Stack} from "expo-router";
 import {Gstyles} from "../../Styles/GlobalStyles";
 import Styles from "../../Styles/RegisterStyle";
@@ -6,13 +6,13 @@ import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import {Formik} from "formik";
 import {registerSchema} from "../schemas";
 import {Button, Input, Heading} from "../components/reusable_unauth";
+import {themeProvider} from "../themProvider";
 
 const register = () => {
 
 
     // Getting the theme from device
-    let theme = useColorScheme();
-    let Theme = theme === 'light' ? LIGHT : DARK;
+    let Theme = themeProvider()
 
 
     return (<ScrollView style={Styles.view} contentContainerStyle={{

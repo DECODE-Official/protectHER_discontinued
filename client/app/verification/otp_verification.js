@@ -4,6 +4,7 @@ import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import Styles from "../../Styles/otp_verification_styles";
 import {LinearGradient} from "expo-linear-gradient";
 import {useRouter} from "expo-router";
+import {Button} from "../components/reusable_unauth";
 
 const otp_verification = () => {
 
@@ -34,11 +35,8 @@ const otp_verification = () => {
                 <Text style={[Styles.inputInfo, {color: Theme.secondary_Text}]}>Didn't received any otp?</Text>
                 <Text style={[Styles.inputInfo, {color: Theme.highlighted_Text}]} >Resend OTP</Text>
             </View>
-            <TouchableOpacity onPress={() => router.push('/auth/Password_Reset')} style={{width: '80%'}}>
-                <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.otpButton} >
-                    <Text style={Styles.otpText}>CONTINUE</Text>
-                </LinearGradient>
-            </TouchableOpacity>
+
+            <Button onpress={() => router.push('/auth/Password_Reset')} text={'Continue'} />
 
         </SafeAreaView>
     </ScrollView>);
