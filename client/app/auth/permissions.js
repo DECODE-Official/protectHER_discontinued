@@ -1,13 +1,14 @@
-import {View, SafeAreaView, Text, useColorScheme, Button, TouchableOpacity} from "react-native";
-import {Link, Stack, useRouter} from "expo-router";
-import {LIGHT, DARK} from "../../Styles/GlobalStyles";
-import {Camera, CameraType} from "expo-camera";
+import {View, Text, TouchableOpacity} from "react-native";
+import {Link, useRouter} from "expo-router";
+import {Camera} from "expo-camera";
 import {useEffect, useState} from "react";
 import * as Location from "expo-location";
 import Styles from "../../Styles/PermissionsStyle"
 import Icon from "react-native-vector-icons/Ionicons"
 import {LinearGradient} from "expo-linear-gradient";
 import PermissionMessage from "./PermissionMessage";
+import {themeProvider} from "../components/themProvider";
+import {Button, Screen} from "../components/reusable_unauth";
 
 
 const Permissions = () => {
@@ -19,7 +20,7 @@ const Permissions = () => {
     useEffect(() => {
         setTimeout(() => {
             setMessage(true)
-        }, 500)
+        }, 200)
     }, [])
 
 
@@ -98,30 +99,26 @@ const Permissions = () => {
     //------------------------------------------------------------------------------------
 
     // Getting Theme from device settings
-    let theme = useColorScheme();
-    let Theme = theme === 'light' ? LIGHT : DARK;
+    let Theme = themeProvider();
 
-    return (<SafeAreaView
-        style={{alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor: Theme.background}}>
-        <Stack.Screen options={{
-            headerShown: false
-        }}/>
-        {message ? <View style={Styles.popupMessage}>
-            <PermissionMessage onpress={() => setMessage(false)} />
-        </View> : ''}
-        <View style={Styles.TitleSection}>
-            <Text style={[Styles.Title, {color: Theme.primary_Text}]}>Grant Permissions</Text>
-        </View>
-        <View style={Styles.Details}>
-            <Text style={[Styles.DetailsText, {color: Theme.secondary_Text, marginBottom: 10}]}>We will need your
-                permissions to Access some features.</Text>
-            <Link href="#">
-                <Text style={[Styles.DetailsText, {color: Theme.highlighted_Text}]}>Why?</Text>
-            </Link>
-        </View>
-        <View style={Styles.PermissionSection}>
-            {Permissions.map((item) => {
-                return (<View key={item._id} style={Styles.Permission}>
+    return (
+        <Screen>
+            {message ? <View style={Styles.popupMessage}>
+                <PermissionMessage onpress={() => setMessage(false)}/>
+            </View> : ''}
+            <View style={Styles.TitleSection}>
+                <Text style={[Styles.Title, {color: Theme.primary_Text}]}>Grant Permissions</Text>
+            </View>
+            <View style={Styles.Details}>
+                <Text style={[Styles.DetailsText, {color: Theme.secondary_Text, marginBottom: 10}]}>We will need your
+                    permissions to Access some features.</Text>
+                <Link href="#">
+                    <Text style={[Styles.DetailsText, {color: Theme.highlighted_Text}]}>Why?</Text>
+                </Link>
+            </View>
+            <View style={Styles.PermissionSection}>
+                {Permissions.map((item) => {
+                    return (<View key={item._id} style={Styles.Permission}>
                         <Icon name={item.icon} size={40} color={Theme.icon_Color}/>
                         <Text style={[Styles.PermissionText, {color: Theme.secondary_Text}]}>{item.text}</Text>
                         <TouchableOpacity onPress={item.press}>
@@ -132,16 +129,12 @@ const Permissions = () => {
                             </LinearGradient>
                         </TouchableOpacity>
                     </View>)
-            })
+                })
 
-            }
-        </View>
-        <TouchableOpacity onPress={() => routeToRegister()} style={Styles.Register}>
-            <LinearGradient colors={['#5fcfff', '#00a0e5']} style={Styles.RegisterButton}>
-                <Text style={Styles.RegisterText}>Continue</Text>
-            </LinearGradient>
-        </TouchableOpacity>
-    </SafeAreaView>)
+                }
+            </View>
+            <Button text="Continue" onpress={() => routeToRegister()}/>
+        </Screen>)
 }
 
 export default Permissions;

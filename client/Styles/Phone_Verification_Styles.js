@@ -21,10 +21,12 @@ const styles = StyleSheet.create({
         marginBottom: 50,
     },
     Form: {
-        width: '80%',
+        width: '100%',
+        alignItems: 'center',
     },
     inputArea: {
         marginBottom: 50,
+        width: '80%',
         justifyContent: 'space-between'
     },
     input: {
