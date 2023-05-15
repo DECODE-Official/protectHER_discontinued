@@ -34,7 +34,7 @@ exports.signup = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role
+      role,
     });
 
     return res.status(200).json({
