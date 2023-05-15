@@ -1,32 +1,20 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
 const app = express();
-const dotenv = require('dotenv');
-const bcrypt = require("bcrypt");
 
-const userRoutes = require("./routes/userRoutes");
-const noteRoutes = require("./routes/noteRoutes");
+// require("dotenv").config({ path: "./.env" });
+require("dotenv").config();
+const PORT = process.env.PORT || 4000;
 
+//added json middleware
 app.use(express.json());
 
-app.use("/users", userRoutes);
-app.use("/note",noteRoutes);
+require("./config/database").connect();
 
-app.use(express.urlencoded({extended: false}))
+//route import and mount
+const user = require("./routes/user");
+app.use("/api/v1", user);
 
-dotenv.config({path: './config.env'});
-
-require('./db/conn');
-
-app.get("/", (req, res)=>{
-    res.send(`<h1>Home Page</h1>`);
-})
-
-const PORT = process.env.PORT;
-
-
-app.listen(PORT, (req, res)=>{
-    console.log(`Server listening at Port ${PORT}`);
-})
-
-module.exports = app;
+//activated server
+app.listen(PORT, () => {
+  console.log(`App is listening at ${PORT}`);
+});
