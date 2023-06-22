@@ -1,16 +1,14 @@
-import {View, Text, ScrollView, SafeAreaView, TextInput, TouchableOpacity} from "react-native";
-import {Stack, useRouter} from "expo-router";
+import {View, Text} from "react-native";
+import {useRouter} from "expo-router";
 import Styles from "../../Styles/Phone_Verification_Styles";
 import Icon from 'react-native-vector-icons/Feather';
 import {Formik} from "formik";
-import {loginSchema} from "../schemas";
-import {LinearGradient} from "expo-linear-gradient";
-import {themeProvider} from "../components/themProvider";
 import {Button, Input, Screen} from "../components/reusable_unauth";
+import {useTheme} from "../../hooks/useTheme";
 
 const Phone_No_Verification = () => {
 
-    let Theme = themeProvider();
+    const Theme = useTheme();
 
     const router = useRouter();
 

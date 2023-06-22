@@ -5,13 +5,13 @@ import Styles from "../../Styles/RegisterStyle";
 import {Formik} from "formik";
 import {registerSchema} from "../schemas";
 import {Button, Input, Heading, Screen} from "../components/reusable_unauth";
-import {themeProvider} from "../components/themProvider";
+import {useTheme} from "../../hooks/useTheme";
 
 const register = () => {
 
 
     // Getting the theme from device
-    let Theme = themeProvider()
+    const Theme = useTheme();
 
 
     return (

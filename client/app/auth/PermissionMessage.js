@@ -1,13 +1,11 @@
-import {SafeAreaView, View, ScrollView, Text, TouchableOpacity, useColorScheme, Button} from "react-native";
-import {LinearGradient} from "expo-linear-gradient";
-import {LIGHT, DARK} from "../../Styles/GlobalStyles";
+import {SafeAreaView, View, ScrollView, Text, TouchableOpacity} from "react-native";
 import Styles from "../../Styles/MessageBoxStyle";
 import Icon from "react-native-vector-icons/Feather";
+import {useTheme} from "../../hooks/useTheme";
 
 const PermissionMessage = (props) => {
 
-    let theme = useColorScheme();
-    let Theme = theme === 'light' ? LIGHT : DARK;
+    const Theme = useTheme()
 
     return (<SafeAreaView>
         <View style={{backgroundColor: Theme.background, borderRadius: 15 }}>
