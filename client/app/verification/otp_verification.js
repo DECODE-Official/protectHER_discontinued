@@ -1,17 +1,14 @@
-import {Text, View, SafeAreaView, ScrollView, useColorScheme, TextInput, TouchableOpacity} from "react-native";
-import {Stack} from "expo-router";
-import {LIGHT, DARK} from "../../Styles/GlobalStyles";
+import {Text, View} from "react-native";
 import Styles from "../../Styles/otp_verification_styles";
-import {LinearGradient} from "expo-linear-gradient";
 import {useRouter} from "expo-router";
 import {Button, Input, Screen} from "../components/reusable_unauth";
+import {useTheme} from "../../hooks/useTheme";
 
 const otp_verification = () => {
 
     const router = useRouter();
+    const Theme = useTheme();
 
-    let theme = useColorScheme();
-    let Theme = theme === 'light' ? LIGHT : DARK;
     return (
         <Screen>
             <Text style={Styles.icon}>******</Text>

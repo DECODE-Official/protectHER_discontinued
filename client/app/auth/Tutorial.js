@@ -1,21 +1,19 @@
-import {Text, View, Image, TouchableOpacity, useColorScheme, SafeAreaView} from "react-native";
+import {Text, View, Image, TouchableOpacity, useColorScheme} from "react-native";
 import {LinearGradient} from "expo-linear-gradient";
-import {Link, Stack} from "expo-router";
+import {Link} from "expo-router";
 import Styles from "../../Styles/TutorialStyle";
-import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import TutorialDark from '../../assets/images/TutorialDark.png'
 import TutorialLight from '../../assets/images/Tutorial.png'
 import Icon from "react-native-vector-icons/AntDesign";
 import {Screen} from "../components/reusable_unauth";
+import {useTheme} from "../../hooks/useTheme";
 
 const Tutorial = () => {
 
-    let theme = useColorScheme();
+    const Theme = useTheme();
+    const theme = useColorScheme();
 
-    let Theme = theme === 'light' ? LIGHT : DARK;
-
-    return (
-        <Screen>
+    return (<Screen>
             <Text style={[Styles.Heading, {color: Theme.primary_Text}]}>Welcome to ProtectHer</Text>
             <View style={Styles.VideoSec}>
                 <Image source={theme === 'light' ? TutorialDark : TutorialLight} style={Styles.Video}/>
@@ -36,8 +34,7 @@ const Tutorial = () => {
                     <Icon name="arrowright" size={30} color="#fff"/>
                 </LinearGradient>
             </Link>
-        </Screen>
-    )
+        </Screen>)
 }
 
 export default Tutorial;

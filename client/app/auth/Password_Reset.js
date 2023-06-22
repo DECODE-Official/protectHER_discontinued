@@ -1,16 +1,14 @@
-import {View, Text, ScrollView, SafeAreaView, useColorScheme, TextInput, TouchableOpacity} from "react-native";
+import {View, Text, ScrollView, SafeAreaView, TextInput, TouchableOpacity} from "react-native";
 import Styles from "../../Styles/resetPassword_styles";
 import {Stack} from "expo-router";
-import {LIGHT, DARK} from "../../Styles/GlobalStyles";
 import {LinearGradient} from "expo-linear-gradient";
 import {useRouter} from "expo-router";
+import {useTheme} from "../../hooks/useTheme";
 
 const Password_Reset = () => {
 
     const router = useRouter();
-
-    let theme = useColorScheme();
-    let Theme = theme === 'light' ? LIGHT : DARK;
+    const Theme = useTheme()
 
     return (<ScrollView
         contentContainerStyle={{

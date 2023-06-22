@@ -1,16 +1,16 @@
-import {View, Text, SafeAreaView, ScrollView} from "react-native";
+import {View, Text} from "react-native";
 import Styles from '../Styles/LoginScreenStyle';
-import {Link, Stack} from "expo-router";
+import {Link} from "expo-router";
 import {Formik} from "formik";
 import {Gstyles} from "../Styles/GlobalStyles";
 import {loginSchema} from "./schemas";
 import {Button, Input, Heading, Screen} from "./components/reusable_unauth";
-import {themeProvider} from "./components/themProvider";
+import {useTheme} from "../hooks/useTheme";
 
 const Login = () => {
 
     // Get the current theme
-    let Theme = themeProvider();
+    let Theme = useTheme();
 
     return (<Screen>
         <Heading heading={'Login'}/>
